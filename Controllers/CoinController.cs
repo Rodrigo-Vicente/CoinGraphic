@@ -10,14 +10,9 @@ namespace CoinGraphic.Controllers
 {
     public class CoinController : Controller
     {
-        protected readonly ADDContext _Db;
-        
-        private IConfiguration _configuration;
         private ICoinBTCRepository _coinRepository;
-        public CoinController(IConfiguration iconfig, ADDContext db, ICoinBTCRepository coinRepository)
+        public CoinController(ICoinBTCRepository coinRepository)
         {
-            _configuration = iconfig;
-            _Db = db;
             _coinRepository = coinRepository;
         }
         public IActionResult Index()
@@ -25,14 +20,8 @@ namespace CoinGraphic.Controllers
             return View();
         }
 
-        //public void SaveCoinHistoric()
-        //{
-        //    _coinRepository.SaveCoinBTC();
-        //}
-
-
         [HttpGet]
-        public JsonResult CallApiCoin()
+        public JsonResult CoinHistoricValues()
         {
             var historicBTC5y =  _coinRepository.GetHistoric();
             var historicBtc30days = _coinRepository.GetLast30Days();

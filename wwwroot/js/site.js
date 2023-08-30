@@ -2,7 +2,7 @@
 // Write your JavaScript code.
 function callCoin() {
     $.ajax({
-        url: 'Coin/CallApiCoin',
+        url: 'Coin/CoinHistoricValues',
         type: "GET",
         data: "",
 
